@@ -37,12 +37,11 @@ def listdir_nohidden(path):
             yield f
 
 
-@app.route('/choose_card', methods=['GET', 'POST'])
-def choose_card():
+@app.route('/choose_card/<card_name>/<index>', methods=['GET', 'POST'])
+def choose_card(card_name, index):
+    # card_name will be necessary for avoiding duplicates
     global first_row_cards
-    for x in range(0,3):
-        if first_row_cards[x] == request.form['submit']:
-            first_row_cards[x] = random.choice(all_cards)
+    first_row_cards[int(index) - 1] = random.choice(all_cards)
     return display_game()
 
 

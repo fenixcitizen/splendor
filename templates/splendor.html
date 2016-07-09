@@ -6,18 +6,20 @@
 </head>
 <body>
 <h1>Splendor for the win!</h1>
-
-<form action="/choose_card" method="post">
-    <ul>
+<table>
+    <tbody>
+    <tr>
         {% for card in cards %}
-        <li>
-            <button type="submit" value={{ card }}>
-                <img src="static/cards/{{ card }}" height="240" width="150"/>
-            </button>
-        </li>
+            <td>
+                <form action="/choose_card/{{ card }}/{{ loop.index }}" method="POST" >
+                    <button type="submit" value={{ card }}>
+                        <img src="/static/cards/{{ card }}" height="240" width="150"/>
+                    </button>
+                </form>
+            </td>
         {% endfor %}
-    </ul>
-
-</form>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
