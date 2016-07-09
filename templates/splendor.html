@@ -14,12 +14,14 @@
     <script type=text/javascript>
         $(function () {
             $('button#card_button').on('click', function () {
+                var button_clicked = $(this);
                 var card_to_replace = $('img', this);
                 $.getJSON($SCRIPT_ROOT + '/choose_card_ajax',
                         {
-                            card_info: $('button#card_button').val()
+                            card_info: button_clicked.val()
                         },
                         function (data) {
+                            button_clicked.val(data.result);
                             card_to_replace.prop("src", 'static/cards/' + data.result);
                         });
                 return false;
