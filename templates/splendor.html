@@ -6,6 +6,11 @@
 </head>
 <body>
     <h1>Splendor for the win!</h1>
-    <img src="static/cards/g0_1w_3b_1g.jpg" height="420" width="300">
+
+    <form action="/choose_card" method="post">
+      <button type="submit" value="g0_1w_3b_1g">
+              <img src="static/cards/{{ card }}" height="420" width="300"/>
+      </button>
+    </form>
 </body>
 </html>
