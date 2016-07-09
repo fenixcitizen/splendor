@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask import render_template
 import random
 import os
@@ -40,9 +40,9 @@ def listdir_nohidden(path):
 @app.route('/choose_card', methods=['GET', 'POST'])
 def choose_card():
     global first_row_cards
-    for card in first_row_cards
-        if card == request.data
-    first_row_cards[0] = random.choice(all_cards)
+    for x in range(0,3):
+        if first_row_cards[x] == request.form['submit']:
+            first_row_cards[x] = random.choice(all_cards)
     return display_game()
 
 
