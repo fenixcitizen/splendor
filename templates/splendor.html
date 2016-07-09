@@ -29,18 +29,20 @@
 </head>
 <body>
 <h1>Splendor for the win!</h1>
-<span id="result">?</span>
-<form name="first_row" action="/choose_card" method="post">
-    <ul>
+<table>
+    <tbody>
+    <tr>
         {% for card in cards %}
-            <li>
-                <button id="card_button" type="submit" value={{ card }}>
-                    <img src="static/cards/{{ card }}" height="240" width="150"/>
-                </button>
-            </li>
+            <td>
+                <form action="/choose_card" method="POST" >
+                    <button id="card_button" type="submit" value={{ card }}>
+                        <img src="static/cards/{{ card }}" height="240" width="150"/>
+                    </button>
+                </form>
+            </td>
         {% endfor %}
-    </ul>
-
-</form>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
