@@ -12,17 +12,20 @@
     </script>
 
     <script type=text/javascript>
-  $(function() {
-    $('button#card_button').bind('click', function() {
-      $.getJSON($SCRIPT_ROOT + '/choose_card_ajax', {
-        card_info: $('button#card_button').val(),
-      }, function(data) {
-        $("#result").text(data.result);
-      });
-      return false;
-    });
-  });
-</script>
+        $(function () {
+            $('button#card_button').on('click', function () {
+                var card_to_replace = $('img', this);
+                $.getJSON($SCRIPT_ROOT + '/choose_card_ajax',
+                        {
+                            card_info: $('button#card_button').val()
+                        },
+                        function (data) {
+                            card_to_replace.prop("src", 'static/cards/' + data.result);
+                        });
+                return false;
+            });
+        });
+    </script>
 </head>
 <body>
 <h1>Splendor for the win!</h1>

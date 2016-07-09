@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask import render_template
 import random
 import os
@@ -40,9 +40,10 @@ def listdir_nohidden(path):
 @app.route('/choose_card', methods=['GET', 'POST'])
 def choose_card():
     global first_row_cards
-    for x in range(0,3):
-        if first_row_cards[x] == request.form['submit']:
-            first_row_cards[x] = random.choice(all_cards)
+    card_info = request.args.get('card_info')
+    for x in range(0,2):
+        if first_row_cards[x] == card_info:
+            first_row_cards[x+1] = random.choice(all_cards)
     return display_game()
 
 
@@ -53,7 +54,7 @@ def choose_card_ajax():
     for x in range(0,2):
         if first_row_cards[x] == card_info:
             first_row_cards[x+1] = random.choice(all_cards)
-    return display_game()
+    return jsonify(result=random.choice(all_cards))
 
 
 if __name__ == '__main__':
