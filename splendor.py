@@ -46,6 +46,16 @@ def choose_card():
     return display_game()
 
 
+@app.route('/choose_card_ajax')
+def choose_card_ajax():
+    global first_row_cards
+    card_info = request.args.get('card_info')
+    for x in range(0,2):
+        if first_row_cards[x] == card_info:
+            first_row_cards[x+1] = random.choice(all_cards)
+    return display_game()
+
+
 if __name__ == '__main__':
     initialize_game()
     app.run()
