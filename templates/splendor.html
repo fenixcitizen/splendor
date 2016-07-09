@@ -5,12 +5,19 @@
     <title>Splendor</title>
 </head>
 <body>
-    <h1>Splendor for the win!</h1>
+<h1>Splendor for the win!</h1>
 
-    <form action="/choose_card" method="post">
-      <button type="submit" value="g0_1w_3b_1g">
-              <img src="static/cards/{{ card }}" height="420" width="300"/>
-      </button>
-    </form>
+<form action="/choose_card" method="post">
+    <ul>
+        {% for card in cards %}
+        <li>
+            <button type="submit" value={{ card }}>
+                <img src="static/cards/{{ card }}" height="240" width="150"/>
+            </button>
+        </li>
+        {% endfor %}
+    </ul>
+
+</form>
 </body>
 </html>
