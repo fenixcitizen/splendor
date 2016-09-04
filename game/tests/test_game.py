@@ -2,7 +2,7 @@ import unittest
 import unittest.mock
 from game.Game import Game
 from game.Game import Player
-
+from game.Game import GameException
 
 class TestGame(unittest.TestCase):
 
@@ -35,3 +35,6 @@ class TestGame(unittest.TestCase):
 
     def test_initialized_with_first_turn(self):
         self.assertEqual(self._game_under_test.is_last_turn, False)
+
+    # def test_initialize_with_correct_number_of_tokens(self):
+    #     self.assertEqual(self._game_under_test.is_last_turn, False)
