@@ -34,7 +34,29 @@
 <table>
     <tbody>
     <tr>
-        {% for card in cards %}
+        {% for card in level3_cards %}
+            <td>
+                <form action="/choose_card" method="POST" >
+                    <button id="card_button" type="submit" value={{ card }}>
+                        <img src="static/cards/{{ card }}" height="240" width="150"/>
+                    </button>
+                </form>
+            </td>
+        {% endfor %}
+    </tr>
+    <tr>
+        {% for card in level2_cards %}
+            <td>
+                <form action="/choose_card" method="POST" >
+                    <button id="card_button" type="submit" value={{ card }}>
+                        <img src="static/cards/{{ card }}" height="240" width="150"/>
+                    </button>
+                </form>
+            </td>
+        {% endfor %}
+    </tr>
+    <tr>
+        {% for card in level1_cards %}
             <td>
                 <form action="/choose_card" method="POST" >
                     <button id="card_button" type="submit" value={{ card }}>
